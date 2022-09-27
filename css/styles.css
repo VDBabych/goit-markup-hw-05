@@ -104,8 +104,28 @@ img {
 }
 
 .nav-item .current-page {
+    position: relative;
     color: var(--accent-color);
-}    
+}   
+
+.current-page::after {
+    position: absolute;
+    bottom: -33.5px;
+    left: 0;
+
+    content: "";
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--accent-color);
+
+}
+
+.nav-item .link,
+.contacts .link,
+.contact-list .link {
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .nav-item .link:hover,
 .nav-item .link:focus,
@@ -264,8 +284,33 @@ img {
     margin-right: 30px;
 }
 
+.work-directions-item {
+    position: relative;
+    height: 294px;
+}
+
+.work-directions-title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(47, 48, 58, 0.8);;
+    padding: 27px 10px;
+
+    font-size: 14px;
+    line-height: calc(16/14);
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--primary-white-color);
+}
+
 .team-section {
     background-color: var(--btn-bg-color);
+}
+
+.work-directions-image {
+    min-width: 100%;
+    height: auto;
 }
 
 .team-section .section-title {
@@ -327,12 +372,16 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-icon {
     fill: var(--icon-color);
     width: 20px;
     height: 20px;
+
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link:hover .social-icon,
@@ -369,10 +418,14 @@ img {
     border-radius: 4px;
     border: 1px solid var(--icon-color);
     border-radius: 4px;
+
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-icon {
     fill: var(--icon-color);
+
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-link:hover .client-icon,
@@ -446,6 +499,7 @@ img {
 
 .footer-social-block .social-list-item {
     background-color: var(--icon-dark-color);
+    transition: background-color 1000ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-social-block .social-list-item:hover {
@@ -520,6 +574,8 @@ img {
     display: block;
     width: 100%;
     height: 100%;
+
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .work-card .link:hover,
@@ -528,6 +584,36 @@ img {
     0px 1px 1px rgba(0, 0, 0, 0.12), 
     0px 4px 4px rgba(0, 0, 0, 0.06), 
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.work-card-image-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.work-card-overlay {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transform: translateY(0);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+    background-color: rgba(33, 150, 243, 0.9);
+}
+
+.work-card:hover .work-card-overlay {
+    transform: translateY(-100%);
+}
+
+.work-card-text {
+    padding: 24px;
+    margin: auto;
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: calc(28/18);
+    color: var(--primary-white-color);
 }
 
 .btn-list li:not(:last-child) {
@@ -549,6 +635,12 @@ img {
     text-align: center;
 }
 
+.btn {
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .btn-list .btn:hover,
 .btn-list .btn:focus {
     background-color: var(--accent-color);
@@ -557,4 +649,53 @@ img {
     0px 3px 1px rgba(0, 0, 0, 0.1), 
     0px 1px 2px rgba(0, 0, 0, 0.08), 
     0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(0.2) rotate(360deg);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 528px;
+    min-height: 581px;
+    background-color: var(--primary-white-color);
+    box-shadow: 
+    0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 1px 1px rgba(0, 0, 0, 0.14), 
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
