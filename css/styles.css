@@ -499,7 +499,7 @@ img {
 
 .footer-social-block .social-list-item {
     background-color: var(--icon-dark-color);
-    transition: background-color 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-social-block .social-list-item:hover {
@@ -508,6 +508,7 @@ img {
 
 .footer-social-block .social-icon {
     fill: var(--primary-white-color);
+    transition: none;
 }
 
 .projects-section h1,
@@ -654,6 +655,7 @@ img {
 .backdrop.is-hidden {
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
 }
 
 .backdrop {
