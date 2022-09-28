@@ -603,7 +603,8 @@ img {
     background-color: rgba(33, 150, 243, 0.9);
 }
 
-.work-card:hover .work-card-overlay {
+.work-card .link:hover .work-card-overlay,
+.work-card .link:focus .work-card-overlay {
     transform: translateY(-100%);
 }
 
